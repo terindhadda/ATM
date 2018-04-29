@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styling.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/updateBalance.js"></script>
+</head>
+
+<div class="container">
+
+   <div class="row">
+       <div id="title"></div>
+</div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" id="info"></div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" id="linkWithdraw"></div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" id="deposit"></div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><a href="selectAcct.html" style="" class="btn btn-danger btn-lg returnCardButton">Back</a></div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    // LEAVE DOWN HERE
+    function getQueryStrings() {
+        var assoc  = {};
+        var decode = function (s) { return decodeURIComponent(s.replace(/\+/g, " ")); };
+        var queryString = location.search.substring(1);
+        var keyValues = queryString.split('&');
+
+        for(var i in keyValues) {
+            var key = keyValues[i].split('=');
+            if (key.length > 1) {
+                assoc[decode(key[0])] = decode(key[1]);
+            }
+        }
+        return assoc;
+    }
+    var qs = getQueryStrings();
+    var myParam = qs["account"];
+    console.log(myParam);
+    $("#title").append('<h1 style="text-align: center">' + myParam + " 1234567887654321:" + '</h1>');
+    if (myParam == 'SAV'){
+        $("#info").append('<a href="info.html?account=SAV"  style="" class="btn btn-primary btn-lg accountButton">Account Information</a>');
+        $("#linkWithdraw").append('<a href="withdraw.html?account=SAV"  style="" class="btn btn-primary btn-lg accountButton">Withdraw Funds</a>');
+        $("#deposit").append('<a href="deposit.html?account=SAV"  style="" class="btn btn-primary btn-lg accountButton">Deposit Funds</a>');
+    }else{
+        $("#info").append('<a href="info.html?account=CHQ"  style="" class="btn btn-primary btn-lg accountButton">Account Information</a>');
+        $("#linkWithdraw").append('<a href="withdraw.html?account=CHQ"  style="" class="btn btn-primary btn-lg accountButton">Withdraw Funds</a>');
+        $("#deposit").append('<a href="deposit.html?account=CHQ"  style="" class="btn btn-primary btn-lg accountButton">Deposit Funds</a>');
+    }
+</script>
+</body>
+</html>

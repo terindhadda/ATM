@@ -1,0 +1,175 @@
+h1{
+    font-size: 56px;
+}
+
+body{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffa154+0,ff7400+100 */
+    background: #ffa154; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #ffa154 0%, #ff7400 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, #ffa154 0%,#ff7400 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #ffa154 0%,#ff7400 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa154', endColorstr='#ff7400',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+/*Home*/
+.largeMenuButton {
+    height:300px;
+    width:300px;
+    cursor:pointer;
+    margin: 20px;
+    font-size: 32px;
+    text-align: center;
+    line-height: 250px;
+    border: 5px outset black;
+}
+
+
+.largeMenuButton:hover {
+    background-color: lightblue;
+    color:black;
+}
+
+.returnCardButton{
+    border: 5px outset red;
+    cursor:pointer;
+    float: right;
+    font-size: 32px;
+    margin:30px;
+}
+.returnCardButton:hover{
+    background-color: black;
+    color:white;
+}
+
+/*Select Account*/
+.accountButton {
+    border: 5px outset black;
+    width:700px;
+    color: #dddddd;
+    cursor:pointer;
+    margin: 20px;
+    font-size: 40px;
+}
+
+.accountButton:hover {
+    background-color: lightblue;
+    color:black;
+}
+
+.nextButton{
+     border: 5px  gray;
+     background-color: lightgray;
+     width:200px;
+     cursor:pointer;
+     margin: 20px;
+     font-size: 32px;
+     color: gray;
+ }
+
+.page{
+    border: 5px  gray;
+    background-color: white;
+    width:200px;
+    margin: 20px;
+    font-size: 32px;
+    color: gray;
+}
+
+/*Account page*/
+.accountDisplay {
+    border: 5px outset black;
+    /*background-color: white;*/
+    width:530px;
+    cursor:pointer;
+    margin: 10px;
+    font-size: 30px;
+    color: #dddddd;
+}
+
+.accountDisplay:hover {
+    background-color: lightblue;
+    color:black;
+}
+
+.optionButton{
+    border: 5px outset black;
+    background-color: white;
+    height:150px;
+    width:600px;
+    cursor:pointer;
+    margin: 5px;
+    font-size: 40px;
+    color: black;
+}
+.optionButton:hover {
+    background-color: lightblue;
+    color:black;
+}
+
+
+
+/* Info*/
+
+.infoText {
+    font-size: 50px;
+
+}
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+#p1{
+ text-align: center;
+}
+
+/**Withdrawal**/
+
+
+.withdraw {
+    border: 5px outset black;
+    height: 100px;
+    width: 150px;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 40px;
+}
+
+.backButton{
+    height:80px;
+    width:150px;
+    border: 5px outset red;
+    cursor:pointer;
+    font-size: 32px;
+    margin:10px;
+}
+.backButton:hover{
+    background-color: #4a0000;
+    color:white;
+}
+
+.enterButton{
+    height:80px;
+    width:150px;
+    border: 5px outset green;
+    cursor:pointer;
+    float: right;
+    font-size: 32px;
+    margin:10px;
+}
+.enterButton:hover{
+    background-color: green;
+    color:white;
+}

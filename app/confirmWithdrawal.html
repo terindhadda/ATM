@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styling.css">
+    <script src="https://use.fontawesome.com/70aff799b3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/updateBalance.js"></script>
+</head>
+
+<style>
+
+#result{
+  font-size: 60px;
+}
+.Button{
+    position: absolute;
+    
+  background-color: white;
+  cursor:pointer;
+  font-size: 32px;
+  margin:30px;
+  height:200px;
+  width:200px;
+}
+
+.Button:hover{
+    color:white;
+}
+
+#yes{
+      border: 5px outset green;
+      top: 40%;
+    left:30%;
+
+}
+#yes:hover{
+    background-color: green;
+
+}
+
+#no{
+      border: 5px outset red;
+      top: 40%;
+    right:30%;
+}
+
+#no:hover{
+    background-color: red;
+}
+</style>
+
+<body>
+<div class="container">
+
+<h1 align="center"><font size="7"><big><big><big><big>Withdraw</big></big></big></big></font></h1>
+
+<p id="result" align="center"></p>
+
+
+<div class="row">
+    <div class="col-sm-6"><a onclick="removeMoney()" style="float: right" class="btn btn-primary btn-lg btn-success confirmationBtn enterButton">YES</a></div>
+    <div class="col-sm-6"><a onclick="goBack()" style="" class="btn btn-primary btn-lg btn-danger confirmationBtn backButton">NO</a></div>
+  </div>
+
+
+<SCRIPT LANGUAGE="javascript">
+
+var text = String(window.location);
+document.getElementById("result").innerHTML=("$"+text.split("=").pop()+"?");
+
+// LEAVE DOWN HERE
+function getQueryStrings() {
+    var assoc  = {};
+    var decode = function (s) { return decodeURIComponent(s.replace(/\+/g, " ")); };
+    var queryString = location.search.substring(1);
+    var keyValues = queryString.split('&');
+
+    for(var i in keyValues) {
+        var key = keyValues[i].split('=');
+        if (key.length > 1) {
+            assoc[decode(key[0])] = decode(key[1]);
+        }
+    }
+    return assoc;
+}
+var qs = getQueryStrings();
+var type = qs["account"];
+var amount = qs["val"];
+$("#title").append('<h3 style="text-align: center"> Enter the amount to withdraw from ' + type+ " 1234567887654321:" + '</h3>');
+
+function submitForm(value) {
+    location.href = 'confirmWithdrawal.html?account='+ type +'&val=' + value ;
+}
+
+function goBack() {
+    location.href = 'withdraw.html?account='+ type ;
+}
+
+function removeMoney() {
+    withdrawMoneyUpdate(amount, type);
+}
+
+</SCRIPT>
+</div>
+</body>
+</html>

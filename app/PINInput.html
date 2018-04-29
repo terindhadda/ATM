@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styling.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/updateBalance.js"></script>
+</head>
+
+<style>
+.PINtext {
+	font-size:40px;
+	width: 300px;
+	text-align: center;
+}
+.calcBtn {
+	font-size: 30px;
+	width: 100px;
+    height: 100px;
+    margin: 10px;
+
+}
+</style>
+
+<body>
+<div class="container">
+
+<div class="row">
+    <h2 style="text-align: center">Please enter your PIN: </h2>
+</div>
+
+<p align="center"><input  id="tbInput" class="PINtext" type="password" placeholder="Enter PIN" maxlength="4"/></p>
+
+<div id="VirtualKey" align="center">
+    <input class="calcBtn" id="btn1" type="button" onclick="input(this);" value="1" />
+    <input class="calcBtn" id="btn2" type="button" onclick="input(this);" value="2" />
+    <input class="calcBtn" id="btn3" type="button" onclick="input(this);" 
+    value="3"/>
+    <br />
+    <input class="calcBtn" id="btn4" type="button" onclick="input(this);" 
+    value="4"/>
+    <input class="calcBtn" id="btn5" type="button" onclick="input(this);" 
+    value="5"/>
+    <input class="calcBtn" id="btn6" type="button" onclick="input(this);" 
+    value="6"/>
+    <br />
+    <input class="calcBtn" id="btn7" type="button" onclick="input(this);" 
+    value="7"/>
+    <input class="calcBtn" id="btn8" type="button" onclick="input(this);" 
+    value="8"/>
+    <input class="calcBtn" id="btn9" type="button" onclick="input(this);" 
+    value="9"/>
+    <br />
+    <input class="calcBtn" id="btnEnt" type="button" onclick="ent()" style="color:green" 
+    value="Enter"/>
+    <input class="calcBtn" id="btn0" type="button" onclick="input(this)" 
+    value="0"/>
+    <input class="calcBtn" id="btnDel" type="button" style="color:red" value="Delete" onclick="del();" />
+</div>
+
+<span id="PIN"></span>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><a href="index.html" style="" class="btn btn-danger btn-lg returnCardButton">Return Card</a></div>
+    </div>
+<script>
+function input(e) {
+    var tbInput = document.getElementById("tbInput");
+    if (tbInput.value.length<4){
+    tbInput.value=tbInput.value + e.value;
+	}
+}
+
+function del() {
+	var tbInput = document.getElementById("tbInput");
+	tbInput.value = tbInput.value.substr(0, tbInput.value.length-1);
+}
+var count=1;
+function ent() {
+	var PIN="6969";
+  	var str1=document.getElementById("tbInput").value;
+  	if (str1==PIN)
+  	{
+  		window.location="home.html";
+ 	}
+ 	else{
+ 		if (count<5){
+ 		alert("Incorrect PIN.  You have "+(5-count)+" attempts left");
+ 		document.getElementById("tbInput").value ="";
+ 		count++;
+ 		}
+ 		else{
+ 				alert("Incorrect PIN limit reached.\nYour card has been frozen for 24 hours.\n Please contact your bank via online or telephone.");
+ 				window.location="index.html";
+ 		}
+ 	}
+}
+$("#PIN").append('<p align="center"> ***The PIN is '+ getPIN()+ '***</p>')
+
+</script>
+</div>
+</body>
+</html>

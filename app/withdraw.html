@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styling.css">
+    <script src="https://use.fontawesome.com/70aff799b3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/updateBalance.js"></script>
+</head>
+
+<style>
+    .accountDisplay {
+        text-align: center;
+                border: 5px;
+
+        position: absolute;
+        left: 34%;
+        height:80px;
+        width:400px;
+        margin: 10px;
+        font-size: 30px;
+        color:black;
+    }
+
+    .quickLinkLabel{
+        font-size: 30px;
+        position: absolute;
+        top: 5%;
+    }
+
+    #leftLabel{
+                left: 1%;
+
+    }
+
+    #rightLabel{
+        right: 1%;
+    }
+
+
+    .quickBtn{
+        position: absolute;
+        border: 5px outset black;
+        height:100px;
+        width:150px;
+        cursor:pointer;
+        margin: 10px;
+        font-size: 40px;
+        color:#fff;
+    }
+    .quickBtn:hover{
+        background-color: lightgrey;
+        color:black;
+    }
+    #twenty{
+        top:10%;
+        left:0%;
+    }
+
+    #forty{
+        top:30%;
+        left:0%;
+    }
+
+    #sixty{
+        top:50%;
+        left:0%;
+    }
+
+    #eighty{
+        top:70%;
+        left:0%;
+    }
+
+    #onehunnit{
+        top:10%;
+        right:0%;
+    }
+
+    #twohunnit{
+        top:30%;
+        right:0%;
+    }
+
+    #threehunnit{
+        top:50%;
+        right:0%;
+    }
+
+    .backButton{
+        position: absolute;
+        right: 0;
+        top: 70%;
+        height:100px;
+        width:150px;
+        border: 5px outset red;
+        cursor:pointer;
+        float: right;
+        font-size: 32px;
+        margin:10px;
+    }
+    .backButton:hover{
+        background-color: #4a0000;
+        color:white;
+    }
+
+    .enterButton{
+        position: absolute;
+        right: 28%;
+        top: 41%;
+        height:80px;
+        width:150px;
+        border: 5px outset green;
+        cursor:pointer;
+        float: right;
+        font-size: 32px;
+        margin:10px;
+    }
+    .enterButton:hover{
+        background-color: green;
+        color:white;
+    }
+
+
+    .arrow{
+        position: absolute;
+        height:150px;
+        width: 150px;
+        left:45%;
+    }
+
+    #up100 {
+        top:10%;
+    }
+
+    #up20 {
+        top:26%;
+    }
+
+    #down20 {
+        top:50%;
+    }
+
+    #down100 {
+        top:66%;
+    }
+
+    #numba{
+        position: absolute;
+        top:44%;
+        left: 43.5%;
+        font-size:40px;
+        width: 180px;
+        text-align: center;
+    }
+    #up100{
+             background: url("images/uparrow100copy.png");
+             background-position: center;
+             background-size: contain;
+         }
+
+    #up100:hover{
+             background: url("images/uparrow100copyhover.png");
+        background-position: center;
+        background-size: contain;
+         }
+
+    #up100:active{
+        background: url("images/uparrow100copy.png");
+        background-position: center;
+        background-size: contain;
+    }
+    #up20{
+        background: url("images/uparrow20copy.png");
+        background-position: center;
+        background-size: contain;
+    }
+
+    #up20:hover{
+        background: url("images/uparrow20copyhover.png");
+        background-position: center;
+        background-size: contain;
+    }
+    #up20:active{
+        background: url("images/uparrow20copy.png");
+        background-position: center;
+        background-size: contain;
+    }
+
+    #down100{
+        background: url("images/downarrow100copy.png");
+        background-position: center;
+        background-size: contain;
+    }
+
+    #down100:hover{
+        background: url("images/downarrow100copyhover.png");
+        background-position: center;
+        background-size: contain;
+    }
+
+    #down100:active{
+        background: url("images/downarrow100copy.png");
+        background-position: center;
+        background-size: contain;
+    }
+
+    #down20{
+        background: url("images/downarrow20copy.png");
+        background-position: center;
+        background-size: contain;
+    }
+    #down20:hover{
+        background: url("images/downarrow20copyhover.png");
+        background-position: center;
+        background-size: contain;
+    }
+
+    #down20:active{
+        background: url("images/downarrow20copy.png");
+        background-position: center;
+        background-size: contain;
+    }
+</style>
+<script>
+
+</script>
+<body style="height: 100vh">
+<div class="container">
+
+    <p class="quickLinkLabel" id="leftLabel">Quick Links</p>
+
+    <p class="quickLinkLabel" id="rightLabel">Quick Links</p>
+<div class="container" >
+<div class="row" id="title">
+</div>
+    <a class="quickBtn btn btn-primary btn-lg " name="20val"  onclick="submitForm(20)" id="twenty" >20</a>
+    <a class="quickBtn btn btn-primary btn-lg " name="40val" onclick="submitForm(40)" id="forty" >40</a>
+    <a class="quickBtn btn btn-primary btn-lg " name="60val" onclick="submitForm(60)" id="sixty" >60</a>
+    <a class="quickBtn btn btn-primary btn-lg " name="80val" onclick="submitForm(80)" id="eighty" >80</a>
+
+    <a class="quickBtn btn btn-primary btn-lg " name="100val" onclick="submitForm(100)" id="onehunnit">100</a>
+    <a class="quickBtn btn btn-primary btn-lg " name="200val" onclick="submitForm(200)" id="twohunnit" >200</a>
+    <a class="quickBtn btn btn-primary btn-lg " name="300val" onclick="submitForm(300)" id="threehunnit">300</a>
+
+<button style="border: none;" class="arrow" id="up100" onclick="add100(this)" value="100" alt=""></button>
+<button style="border: none;" class="arrow" id="up20" onclick="add20(this)" value="20"></button>
+<button style="border: none;" class="arrow" id="down20" onclick="sub20(this)" value="20"></button>
+<button style="border: none;" class="arrow" id="down100" onclick="sub100(this)" value="100"></button>
+
+<input class="backButton btn btn-danger btn-lg " type="button" value="Back" onclick="goBack()"/>
+
+
+<FORM METHOD="LINK" ACTION="confirmWithdrawal.html">
+    <input type="text" name="val" id="numba" value="0" readonly placeholder="$000">
+    <INPUT class="enterButton btn btn-success btn-lg" onclick="submitForm(numba.value)" VALUE="Enter">
+</FORM>
+</div>
+    </div>
+</body>
+<script>
+
+    function add100(e){
+        var val=parseInt(document.getElementById("numba").value);
+        var btnVal = parseInt(document.getElementById("up100").value);
+        var result=val+btnVal;
+        if (result>300){
+                alert("$300 is the limit to withdraw from the ATM");
+            }
+        if (result>=0&&result<=300){
+            document.getElementById("numba").value=result;
+        }}
+
+    function add20(e){
+        var val=parseInt(document.getElementById("numba").value);
+        var btnVal = parseInt(document.getElementById("up20").value);
+        var result=val+btnVal;
+        if (result>300){
+                alert("$300 is the limit to withdraw from the ATM");
+            }
+        if (result>=0&&result<=300){
+
+            document.getElementById("numba").value=result;
+        }
+    }
+
+    function sub20(e){
+        var val=parseInt(document.getElementById("numba").value);
+        var btnVal = parseInt(document.getElementById("down20").value);
+        var result=val-btnVal;
+        if (result>=0){
+            document.getElementById("numba").value=result;
+        }
+    }
+
+    function sub100(e){
+        var val=parseInt(document.getElementById("numba").value);
+        var btnVal = parseInt(document.getElementById("down100").value);
+        var result=val-btnVal;
+        if (result>=0){
+            document.getElementById("numba").value=result;
+        }
+    }
+
+    // LEAVE DOWN HERE
+    function getQueryStrings() {
+        var assoc  = {};
+        var decode = function (s) { return decodeURIComponent(s.replace(/\+/g, " ")); };
+        var queryString = location.search.substring(1);
+        var keyValues = queryString.split('&');
+
+        for(var i in keyValues) {
+            var key = keyValues[i].split('=');
+            if (key.length > 1) {
+                assoc[decode(key[0])] = decode(key[1]);
+            }
+        }
+        return assoc;
+    }
+    var qs = getQueryStrings();
+    var myParam = qs["account"];
+    $("#title").append('<h3 style="text-align: center"> Enter the amount to withdraw from ' + myParam + " 1234567887654321:" + '</h3>');
+
+    function submitForm(value) {
+        console.log(myParam)
+        location.href = 'confirmWithdrawal.html?account='+ myParam +'&val=' + value ;
+    }
+
+    function goBack() {
+        location.href = 'acct.html?account='+ myParam ;
+    }
+
+</script>
+
+
+</html>
+

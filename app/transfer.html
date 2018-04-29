@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/styling.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<script type="text/javascript">
+	var inputLength = 0;
+	var decimalPressed = false;
+
+	function addCode(key) {
+		var input = document.forms[0].depositAmount;
+
+		if (key == "." && inputLength <= 5 && decimalPressed == false) {
+			document.getElementById('btnd').disabled = true;
+			document.getElementById('btnd').style.backgroundColor = "grey";
+			decimalPressed = true;
+			inputLength = 5;
+			input.value = input.value + key;
+		} else if (inputLength < 7) {
+			inputLength += 1;
+			input.value = input.value + key;
+		}
+	console.log("key press - inputLength = " + inputLength);
+	console.log("decimalPressed = " + decimalPressed);
+	}
+
+	function backspace() {
+		var input = document.forms[0].depositAmount;
+		var lastChar = input.value[input.value.length-1];
+		console.log(lastChar);
+		if (lastChar == '.') {
+			console.log("last char is .");
+			input.value = input.value.substr(0, input.value.length - 1);
+			document.getElementById('btnd').disabled = false;
+			document.getElementById('btnd').style.backgroundColor = "";
+			decimalPressed = false;
+			inputLength = input.value.length;
+		} else {
+			input.value = input.value.substr(0, input.value.length - 1);
+			inputLength = input.value.length;
+		}
+		console.log("backspace - inputLength = " + inputLength);
+		console.log("decimalPressed = " + decimalPressed);
+	}
+
+	function submitForm() {
+		//depositMoneyUpdate(document.forms[0].depositAmount.value, 'chequing');
+		document.forms[0].submit();
+	}
+	function emptyCode()  { document.forms[0].depositAmount.value = ""; }
+</script>
+
+<style>
+body {
+	text-align:center;                                       /* ALIGN TEXT IN CENTER OF BODY */
+	background-color:#FFFFFF;                                /* BACKGROUND COLOR */
+	font-family:Verdana, Arial, Helvetica, sans-serif;       /* FRIENDLY FONTS */
+}
+#keypad {margin:auto; margin-top:30px;}                    /* SPACE BETWEEN INPUT AND KEYPAD */
+
+/* INPUT */
+.display {
+	width:300px;
+	margin:50px auto auto auto;
+	background-color:#FFF;
+	color:#000000;
+	border:1px solid #999999;
+	font-size:40px;
+	text-align: center;
+}
+.calcBtn {
+	font-size: 30px;
+	width: 70px;
+	height: 70px;
+	margin: 10px;
+
+}
+.calcBtn#btnEnt {
+	width: 260px;
+	ext-align: center;
+}
+/* KEYPAD */
+#keypad tr td {
+	vertical-align:middle;
+	margin: 10px;
+	text-align:center;
+	border:1px solid #000000;
+	font-size:18px;
+	font-weight:bold;
+	width:40px;
+	height:40px;
+	cursor:pointer;
+	background-color:#666666;
+	color:#CCCCCC;}
+#keypad tr td:hover {background-color:#999999; color:#FFFF00;}
+
+/* PLACEHOLDER CENTERING */
+::-webkit-input-placeholder { text-align: center; }
+:-moz-placeholder { text-align: center; }
+::-moz-placeholder { text-align: center;}
+:-ms-input-placeholder { text-align: center; }
+
+/* RETURN CARD BUTTON STYLING NEEDED */
+
+
+#from{
+	position: absolute;
+	left:15%;
+}
+
+#to{
+	position: absolute;
+	right:15%;
+}
+
+#fromDrop{
+	position: absolute;
+	top:10%;
+	left:13%;
+}
+
+#toDrop{
+	position: absolute;
+	top:10%;
+	right:10%;
+}
+
+
+</style>
+<body>
+<div class="container">
+
+<h1 id="from">From</h1>
+
+<h1 id="to">To</h1>
+
+
+<form action="transferConfirmation.html" method="get">
+
+	    <input class="span2" id="search_type" name="search_type" type="hidden">
+	    <input class="span2" id="search_type2" name="search_type2" type="hidden">
+
+    <div class="btn-group" id="fromDrop" >
+      <a style="background-color: #2c3e50;" class="btn btn-primary btn-lg dropdown-toggle btn-select" data-toggle="dropdown" href="#">Choose an Account <span class="caret"></span></a>
+      <ul class="dropdown-menu" name="fromAccount">
+      <li onclick="$('#search_type').val('CHQ-1234567887654321');"><a href="#"><strong>CHQ</strong> 1234567887654321</a></li>
+      <li class="divider"></li>
+      <li onclick="$('#search_type').val('SAV-1234567887654321');"><a href="#"><strong>SAV</strong> 1234567887654321</a></li>
+    </ul>
+    </div>
+
+    <div class="btn-group" id="toDrop" >
+      <a style="background-color: #2c3e50;" class="btn btn-primary btn-lg dropdown-toggle btn-select2" data-toggle="dropdown" href="#">Choose an Account <span class="caret"></span></a>
+       <ul class="dropdown-menu" name="toAccount">
+      <li onclick="$('#search_type2').val('CHQ-1234567887654321');"><a href="#"> <strong>CHQ</strong> 1234567887654321</a></li>
+      <li class="divider"></li>
+      <li onclick="$('#search_type2').val('SAV-1234567887654321');"><a href="#"><strong>SAV</strong> 1234567887654321</a></li>
+    </ul>
+    </div>
+
+<input id="depositAmount" type="text" name="depositAmount" value="" maxlength="7" class="display" placeholder="$0000.00" readonly="readonly" />
+	<div id="keypad" align="center">
+		<input class="calcBtn" id="btn1" type="button" onclick="addCode('1');" value="1" />
+		<input class="calcBtn" id="btn2" type="button" onclick="addCode('2');" value="2" />
+		<input class="calcBtn" id="btn3" type="button" onclick="addCode('3');"
+			   value="3"/>
+		<br />
+		<input class="calcBtn" id="btn4" type="button" onclick="addCode('4');"
+			   value="4"/>
+		<input class="calcBtn" id="btn5" type="button" onclick="addCode('5');"
+			   value="5"/>
+		<input class="calcBtn" id="btn6" type="button" onclick="addCode('6');"
+			   value="6"/>
+		<br />
+		<input class="calcBtn" id="btn7" type="button" onclick="addCode('7');"
+			   value="7"/>
+		<input class="calcBtn" id="btn8" type="button" onclick="addCode('8');"
+			   value="8"/>
+		<input class="calcBtn" id="btn9" type="button" onclick="addCode('9');"
+			   value="9"/>
+		<br />
+		<input class="calcBtn" id="btn0" type="button" onclick="addCode('0');"
+			   value="0"/>
+		<input class="calcBtn" id="btnd" type="button" onclick="addCode('.');"
+			   value="."/>
+		<input class="calcBtn" id="btnDel" type="button" style="color:red" value="Del" onclick="backspace();" />
+		<br />
+		<input class="calcBtn" id="btnEnt" type="button" onclick="submitForm() " style="color:green"
+			   value="Enter"/>
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4"></div>
+		<div class="col-md-4"><a href="home.html" style="" class="btn btn-danger btn-lg returnCardButton">Back</a></div>
+	</div>
+
+</form>
+	</div>
+</body>
+
+<script>
+$(".dropdown-menu li a").click(function(){
+  var selText = $(this).text();
+  $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+});
+</script>
+</html>

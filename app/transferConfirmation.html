@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<style>
+.okBtn {
+	font-size: 40px;
+	width: 70px;
+}
+</style>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/styling.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="js/updateBalance.js"></script>
+</head>
+
+<body>
+<div class="container-fluid">
+  <h1 class="infoText" align="center">Transfer?</h1>
+  <p class="infoText" id="num" align="center"></p>
+<p class="infoText" id="from" align="center"></p>
+<p class="infoText" id="to" align="center"></p>
+
+
+  <div class="row">
+    <div class="col-sm-6"><a onclick="transfer()" style="float: right" class="btn btn-primary btn-lg btn-success confirmationBtn enterButton">YES</a></div>
+    <div class="col-sm-6"><a href="transfer.html" style="" class="btn btn-primary btn-lg btn-danger confirmationBtn backButton">NO</a></div>
+  </div>
+</div>
+</body>
+
+<SCRIPT LANGUAGE="javascript">
+
+var text = String(window.location);
+var arr=text.split("=");
+var from=arr[1];
+from=from.replace("&search_type2","");
+var to=arr[2];
+to=to.replace("&depositAmount","");
+var num=arr[3];
+console.log(arr)
+document.getElementById("from").innerHTML=("From "+from);
+document.getElementById("to").innerHTML=("To "+to);
+document.getElementById("num").innerHTML=("$"+num);
+
+function transfer(){
+  transferMoney(from ,to , num);
+}
+  function goBack(){
+    location.href = 'transfer.html' ;
+  }
+
+</SCRIPT> 
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<style>
+.okBtn {
+	font-size: 40px;
+	width: 70px;
+}
+</style>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/styling.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="js/updateBalance.js"></script>
+</head>
+
+<body>
+<div class="container-fluid">
+  <h1 class="infoText" align="center">Are you sure you want to deposit the amount specified?</h1>
+  <div id="div1">
+    <h2 class="infoText" align="center" id='result'></h2>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6"><a style="float: right" class="btn btn-primary btn-lg btn-success confirmationBtn enterButton" onclick="depositMoney()">YES</a></div>
+    <div class="col-sm-6"><a onclick="goBack()" style="" class="btn btn-primary btn-lg btn-danger confirmationBtn backButton">NO</a></div>
+  </div>
+</div>
+</body>
+
+<script type="text/javascript">
+  var text = String(window.location);
+  document.getElementById("result").innerHTML=("$"+text.split("=").pop()+"?");
+
+  // LEAVE DOWN HERE
+function getQueryStrings() {
+  var assoc  = {};
+  var decode = function (s) { return decodeURIComponent(s.replace(/\+/g, " ")); };
+  var queryString = location.search.substring(1);
+  var keyValues = queryString.split('&');
+
+  for(var i in keyValues) {
+    var key = keyValues[i].split('=');
+    if (key.length > 1) {
+      assoc[decode(key[0])] = decode(key[1]);
+    }
+  }
+  return assoc;
+}
+var qs = getQueryStrings();
+var type = qs["account"];
+var amount = qs["val"];
+
+function depositMoney() {
+  depositMoneyUpdate(amount, type);
+}
+
+function goBack() {
+  location.href = 'deposit.html?account='+ type ;
+}
+</script>
+
+</html>
